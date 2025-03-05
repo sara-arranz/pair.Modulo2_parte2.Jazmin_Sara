@@ -1,4 +1,4 @@
-pair.Modulo2_parte2.Jazmin_Sara
+# pair.Modulo2_parte2.Jazmin_Sara
 
 Este repositorio contiene ejercicios desarrollados durante Pair Programming del Módulo 2 del Bootcamp de Data Analytics de Adalab.
 
