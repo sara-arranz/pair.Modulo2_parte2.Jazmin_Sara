@@ -94,3 +94,39 @@ SELECT OrderID,
 											FROM orderdetails AS od
 												WHERE od.ProductID = 6
 														AND od.Quantity > 20;
+
+-- BONUS: Qué producto es más popular: 
+-- Extraed cuál es el producto que más ha sido comprado y la cantidad que se compró.
+
+SELECT ProductID, Quantity
+FROM orderdetails
+ORDER BY Quantity;
+
+----------------------
+-- CON ESTA QUERY ORDENA CORRECTAMENTE LOS PRODUCTOS MÁS VENDIDOS, PERO NO NOS DEVUELVE LA CANTIDAD
+SELECT ProductID, ProductName
+FROM Products
+WHERE ProductID IN (SELECT ProductID
+					FROM orderdetails)
+ORDER BY (SELECT SUM(Quantity)
+						FROM orderdetails
+							WHERE orderdetails.ProductID = Products.ProductID) DESC;
+
+
+-----------------------------------
+-- RESULTADO COMPLETO CON JOIN
+SELECT p.ProductID, p.ProductName, SUM(od.Quantity) AS TotalQuantity
+FROM Products p
+JOIN orderdetails od ON p.ProductID = od.ProductID
+GROUP BY p.ProductID, p.ProductName
+ORDER BY TotalQuantity DESC;
+
+---------------------------------
+-- RESULTADO COMPLETO CON SUBCONSULTAS CORRELACIONADAS
+SELECT ProductName, (SELECT SUM(Quantity) 
+						FROM orderdetails 
+							WHERE orderdetails.ProductID = Products.ProductID) AS TotalQuantity
+FROM Products
+	WHERE ProductID IN (SELECT DISTINCT ProductID FROM orderdetails)
+	ORDER BY TotalQuantity DESC;
+
