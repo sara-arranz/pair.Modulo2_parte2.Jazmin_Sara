@@ -4,4 +4,9 @@ Este repositorio contiene ejercicios desarrollados durante Pair Programming del 
 
    8. SQL Queries Avanzadas.
    9. SQL Union Tablas (Joins I).
-   10. SQL Union Tablas (Joins II)
+   10. SQL Union Tablas (Joins II).
+   11. SQL Operadores Especiales de Filtro.
+   12. SQL Subconsultas.
+   13. Beautiful Soup.
+   14. Selenium.
+       
